@@ -15,7 +15,7 @@ interface FilterOptions {
   sizes: string[];
   screenTypes: string[];
   resolutions: string[];
-  priceRanges: string[]; // Added price ranges
+  priceRanges: string[]; // Added priceRanges
 }
 
 interface FilterSidebarProps {
