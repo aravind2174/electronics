@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ShoppingCart, Menu, X } from 'lucide-react';
+import { ShoppingCart, Menu, X, ChevronDown } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { Page } from '../../App';
 
@@ -9,9 +9,17 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { getItemCount } = useCart();
+  const [isBrandsDropdownOpen, setIsBrandsDropdownOpen] = useState(false);
+
+  const brands = ['TCL', 'VU TV', 'Hisense'];
+
+  const handleBrandClick = (brand: string) => {
+    // You can add brand filtering logic here later
+    console.log('Selected brand:', brand);
+    setIsBrandsDropdownOpen(false);
+    onNavigate('home'); // Navigate to home with brand filter
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -32,19 +40,50 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
           {/* Spacer for logo area */}
           <div className="w-48"></div>
 
-          {/* Search Bar - Desktop */}
-          <div className="hidden md:flex flex-1 max-w-md mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search for TVs..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              />
+          {/* Navigation Menu - Desktop */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {/* Brands Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setIsBrandsDropdownOpen(!isBrandsDropdownOpen)}
+                className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                <span>Brands</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isBrandsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              {isBrandsDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[120px] z-20">
+                  {brands.map((brand) => (
+                    <button
+                      key={brand}
+                      onClick={() => handleBrandClick(brand)}
+                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors"
+                    >
+                      {brand}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
+
+            {/* Recommended for You */}
+            <button
+              onClick={() => onNavigate('home')}
+              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              Recommended for You
+            </button>
+
+            {/* About Us */}
+            <button
+              onClick={() => onNavigate('contact')}
+              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              About Us
+            </button>
+          </nav>
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
@@ -71,24 +110,11 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
           </div>
         </div>
 
-        {/* Mobile Search */}
-        <div className="md:hidden mt-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search for TVs..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-            />
-          </div>
-        </div>
-
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t">
             <nav className="space-y-2">
+              {/* Home */}
               <button 
                 onClick={() => {
                   onNavigate('home');
@@ -98,6 +124,38 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
               >
                 Home
               </button>
+
+              {/* Brands - Mobile */}
+              <div className="px-4 py-2">
+                <div className="text-gray-700 font-medium mb-2">Brands</div>
+                <div className="ml-4 space-y-1">
+                  {brands.map((brand) => (
+                    <button
+                      key={brand}
+                      onClick={() => {
+                        handleBrandClick(brand);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block w-full text-left py-1 text-gray-600 hover:text-blue-600"
+                    >
+                      {brand}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recommended for You */}
+              <button 
+                onClick={() => {
+                  onNavigate('home');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+              >
+                Recommended for You
+              </button>
+
+              {/* About Us */}
               <button 
                 onClick={() => {
                   onNavigate('contact');
@@ -105,12 +163,20 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                 }}
                 className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
               >
-                Contact
+                About Us
               </button>
             </nav>
           </div>
         )}
       </div>
+
+      {/* Click outside to close dropdown */}
+      {isBrandsDropdownOpen && (
+        <div 
+          className="fixed inset-0 z-10" 
+          onClick={() => setIsBrandsDropdownOpen(false)}
+        />
+      )}
     </header>
   );
 };
