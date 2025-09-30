@@ -15,11 +15,11 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
+      <div className="container mx-auto px-4 py-4 h-16 relative">
+        <div className="flex items-center justify-between h-full">
+          {/* Logo - Absolute positioned */}
           <div 
-            className="flex items-center cursor-pointer"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
             onClick={() => onNavigate('home')}
           >
             <img 
@@ -28,6 +28,9 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
               className="h-32 w-auto object-contain"
             />
           </div>
+
+          {/* Spacer for logo area */}
+          <div className="w-48"></div>
 
           {/* Search Bar - Desktop */}
           <div className="hidden md:flex flex-1 max-w-md mx-8">
