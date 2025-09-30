@@ -238,7 +238,7 @@ export const products: Product[] = [
     name: 'VU Vibe DV 65" QLED Designer TV',
     brand: 'VU TV',
     price: 52000,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237046/VU_Vibe_DV_55_QLED_Designer_TV_fgv2lv.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
