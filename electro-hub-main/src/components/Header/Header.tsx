@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
           >
             <div className="h-12 w-48 bg-gray-100 rounded-md flex items-center justify-center">
               <img 
-                src="" // Add your Cloudinary image URL here later
+                src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png" // Add your Cloudinary image URL here later
                 alt="Company Logo"
                 className="h-full w-full object-contain"
                 onError={(e) => {
