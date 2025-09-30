@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
             <img 
               src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png"
               alt="Company Logo"
-              className="h-12 w-auto object-contain"
+              className="h-32 w-auto object-contain"
             />
           </div>
 
