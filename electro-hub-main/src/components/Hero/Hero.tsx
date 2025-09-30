@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
     },
     {
       id: 3,
-      image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759223546/Glo_New_RPD_Main_pzbflj.webp',
+      image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759225628/Vu_Masterpiece_01_Without_Text_fva3ts.webp',
     }
   ];
 
