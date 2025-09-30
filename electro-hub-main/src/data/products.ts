@@ -7,7 +7,7 @@ export const products: Product[] = [
     name: 'VU Master Piece 55" QLED Frame TV',
     brand: 'VU TV',
     price: 47700,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237036/VU_Master_Piece_55QLED_Frame_TV_banbqz.jpg',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
@@ -29,7 +29,7 @@ export const products: Product[] = [
     name: 'VU Master Piece 65" QLED Frame TV',
     brand: 'VU TV',
     price: 69500,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237036/VU_Master_Piece_65_QLED_Frame_TV_aa4aci.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -50,7 +50,7 @@ export const products: Product[] = [
     name: 'VU Master Piece 75" QLED Frame TV',
     brand: 'VU TV',
     price: 86800,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237036/VU_Master_Piece_75QLED_Frame_TV_qoirxz.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -73,7 +73,7 @@ export const products: Product[] = [
     name: 'VU Glo 43" QLED Dolby TV',
     brand: 'VU TV',
     price: 24200,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237035/VU_Glo_43_QLED_Dolby_TV_ckknxz.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -94,7 +94,7 @@ export const products: Product[] = [
     name: 'VU Glo 50" QLED Dolby TV',
     brand: 'VU TV',
     price: 30000,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237035/VU_Glo_50QLED_Dolby_TV_pc3bc3.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -114,7 +114,7 @@ export const products: Product[] = [
     name: 'VU Glo 55" QLED Dolby TV',
     brand: 'VU TV',
     price: 34500,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237035/VU_Glo_55_QLED_Dolby_TV_vykltm.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -135,7 +135,7 @@ export const products: Product[] = [
     name: 'VU Glo 65" QLED Dolby TV',
     brand: 'VU TV',
     price: 49500,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237036/VU_Glo_65_QLED_Dolby_TV_rexax3.jpg',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -155,7 +155,7 @@ export const products: Product[] = [
     name: 'VU Glo 75" QLED Dolby TV',
     brand: 'VU TV',
     price: 65000,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237037/VU_Glo_75_QLED_Dolby_TV_pc0yrt.avif',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -177,7 +177,7 @@ export const products: Product[] = [
     name: 'VU Vibe DV 43" QLED Designer TV',
     brand: 'VU TV',
     price: 28000,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237037/VU_Vibe_DV_43_QLED_Designer_TV_e9oyhh.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -197,7 +197,7 @@ export const products: Product[] = [
     name: 'VU Vibe DV 50" QLED Designer TV',
     brand: 'VU TV',
     price: 35000,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237037/VU_Vibe_DV_50_QLED_Designer_TV_ooerbs.jpg',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -217,7 +217,7 @@ export const products: Product[] = [
     name: 'VU Vibe DV 55" QLED Designer TV',
     brand: 'VU TV',
     price: 36800,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237046/VU_Vibe_DV_55_QLED_Designer_TV_fgv2lv.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -258,7 +258,7 @@ export const products: Product[] = [
     name: 'VU Vibe DV 75" QLED Designer TV',
     brand: 'VU TV',
     price: 74000,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759237036/VU_Master_Piece_75QLED_Frame_TV_qoirxz.jpg',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
