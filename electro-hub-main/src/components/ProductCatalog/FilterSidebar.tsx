@@ -6,7 +6,7 @@ interface Filters {
   sizes: string[];
   screenTypes: string[];
   resolutions: string[];
-  priceRange: [number, number];
+  priceRanges: string[]; // Changed from priceRange: [number, number]
   searchQuery: string;
 }
 
@@ -15,6 +15,7 @@ interface FilterOptions {
   sizes: string[];
   screenTypes: string[];
   resolutions: string[];
+  priceRanges: string[]; // Added price ranges
 }
 
 interface FilterSidebarProps {
@@ -35,7 +36,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   isOpen = true
 }) => {
   const handleCheckboxChange = (
-    filterType: keyof Pick<Filters, 'brands' | 'sizes' | 'screenTypes' | 'resolutions'>,
+    filterType: keyof Pick<Filters, 'brands' | 'sizes' | 'screenTypes' | 'resolutions' | 'priceRanges'>,
     value: string,
     checked: boolean
   ) => {
@@ -45,12 +46,6 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
       : currentValues.filter(v => v !== value);
     
     onFiltersChange({ [filterType]: newValues });
-  };
-
-  const handlePriceRangeChange = (index: 0 | 1, value: number) => {
-    const newRange: [number, number] = [...filters.priceRange];
-    newRange[index] = value;
-    onFiltersChange({ priceRange: newRange });
   };
 
   const FilterSection: React.FC<{
@@ -68,7 +63,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   const CheckboxGroup: React.FC<{
     options: string[];
     selected: string[];
-    filterType: keyof Pick<Filters, 'brands' | 'sizes' | 'screenTypes' | 'resolutions'>;
+    filterType: keyof Pick<Filters, 'brands' | 'sizes' | 'screenTypes' | 'resolutions' | 'priceRanges'>;
   }> = ({ options, selected, filterType }) => (
     <div className="space-y-2 max-h-40 overflow-y-auto w-full">
       {options.map(option => (
@@ -153,63 +148,13 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
             />
           </FilterSection>
 
-          {/* Price Range Filter */}
+          {/* Price Range Filter - Now as Checkboxes */}
           <FilterSection title="Price Range">
-            <div className="space-y-3 w-full">
-              {/* Price Display */}
-              <div className="flex items-center justify-between text-xs text-gray-600 w-full">
-                <span>₹{filters.priceRange[0].toLocaleString()}</span>
-                <span>₹{filters.priceRange[1].toLocaleString()}</span>
-              </div>
-              
-              {/* Range Sliders Container */}
-              <div className="w-full px-1">
-                <div className="relative h-6 w-full">
-                  <input
-                    type="range"
-                    min="0"
-                    max="500000"
-                    step="5000"
-                    value={filters.priceRange[0]}
-                    onChange={(e) => handlePriceRangeChange(0, parseInt(e.target.value))}
-                    className="absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
-                    style={{ zIndex: 1 }}
-                  />
-                  <input
-                    type="range"
-                    min="0"
-                    max="500000"
-                    step="5000"
-                    value={filters.priceRange[1]}
-                    onChange={(e) => handlePriceRangeChange(1, parseInt(e.target.value))}
-                    className="absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb"
-                    style={{ zIndex: 2 }}
-                  />
-                </div>
-              </div>
-
-              {/* Number Inputs */}
-              <div className="grid grid-cols-2 gap-2 w-full">
-                <div className="w-full">
-                  <input
-                    type="number"
-                    placeholder="Min"
-                    value={filters.priceRange[0]}
-                    onChange={(e) => handlePriceRangeChange(0, parseInt(e.target.value) || 0)}
-                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-transparent"
-                  />
-                </div>
-                <div className="w-full">
-                  <input
-                    type="number"
-                    placeholder="Max"
-                    value={filters.priceRange[1]}
-                    onChange={(e) => handlePriceRangeRange(1, parseInt(e.target.value) || 500000)}
-                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-transparent"
-                  />
-                </div>
-              </div>
-            </div>
+            <CheckboxGroup
+              options={filterOptions.priceRanges}
+              selected={filters.priceRanges}
+              filterType="priceRanges"
+            />
           </FilterSection>
 
           {/* Mobile Clear Button */}
@@ -227,29 +172,6 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
           </div>
         </div>
       </div>
-
-      {/* Custom Styles for Range Sliders */}
-      <style jsx>{`
-        .slider-thumb::-webkit-slider-thumb {
-          appearance: none;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: #3b82f6;
-          cursor: pointer;
-          border: 2px solid white;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-        .slider-thumb::-moz-range-thumb {
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: #3b82f6;
-          cursor: pointer;
-          border: 2px solid white;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-      `}</style>
     </div>
   );
 };
