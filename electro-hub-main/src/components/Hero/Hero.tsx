@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
     },
     {
       id: 2,
-      image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759223721/U7N-new_l1qr9b.webp',
+      image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759225478/desktop-image-1750849587-8665_z3vlno.jpg',
     },
     {
       id: 3,
