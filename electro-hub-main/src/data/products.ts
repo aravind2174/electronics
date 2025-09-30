@@ -691,7 +691,7 @@ export const products: Product[] = [
     name: 'TCL 32" QD-Mini LED 4K UHD TV',
     brand: 'TCL',
     price: 39999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_32_QD-Mini_LED_4K_UHD_TV_gxnxmw.webp',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -712,7 +712,7 @@ export const products: Product[] = [
     name: 'TCL 43" Mini-LED HD TV',
     brand: 'TCL',
     price: 29999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_43_Mini-LED_HD_TV_j6fxnm.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -732,7 +732,7 @@ export const products: Product[] = [
     name: 'TCL 55" QLED FHD TV',
     brand: 'TCL',
     price: 49999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_55_QLED_FHD_TV_clzuj5.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -753,7 +753,7 @@ export const products: Product[] = [
     name: 'TCL 65" Google TV 4K UHD',
     brand: 'TCL',
     price: 69999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_65_Google_TV_4K_UHD_yrjgr5.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -774,7 +774,7 @@ export const products: Product[] = [
     name: 'TCL 75" Android TV FHD',
     brand: 'TCL',
     price: 84999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_75_Android_TV_FHD_yvbbjb.jpg',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -794,7 +794,7 @@ export const products: Product[] = [
     name: 'TCL 98" Smart TV HD',
     brand: 'TCL',
     price: 149999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_98_Smart_TV_HD_bbn5kx.webp',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -815,7 +815,7 @@ export const products: Product[] = [
     name: 'TCL 115" AI TV 4K',
     brand: 'TCL',
     price: 299999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759232782/TCL_115_AI_TV_4K_gf1jar.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
