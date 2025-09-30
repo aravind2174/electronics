@@ -53,13 +53,6 @@ const Hero: React.FC = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-
-            {/* Shop Now Button */}
-            <div className="absolute bottom-8 right-8">
-              <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors">
-                Shop Now
-              </button>
-            </div>
           </div>
         ))}
       </div>
