@@ -17,15 +17,25 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo Image Placeholder */}
           <div 
             className="flex items-center cursor-pointer"
             onClick={() => onNavigate('home')}
           >
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-              <span className="text-white font-bold text-xl">TV</span>
-            </div>
-            <span className="text-2xl font-bold text-gray-900">ElectroHub</span>
+            <img 
+              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png" // Add your Cloudinary image URL here later
+              alt="Company Logo"
+              className="h-10 w-auto object-contain"
+              // Fallback placeholder styling if no image
+              style={{ 
+                backgroundColor: '#f3f4f6', 
+                border: '1px dashed #d1d5db',
+                minWidth: '120px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            />
           </div>
 
           {/* Search Bar - Desktop */}
