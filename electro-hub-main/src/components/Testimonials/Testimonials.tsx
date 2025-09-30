@@ -12,56 +12,56 @@ const Testimonials: React.FC = () => {
     {
       id: 2,
       title: 'VU TV Unboxing & Setup Experience',
-      videoId: '', // Add YouTube video ID here
+      videoId: '95PdUbnkRlg?si=SqoAtS5ph1RLw2E9', // Add YouTube video ID here
       duration: '12:30',
       size: 'medium'
     },
     {
       id: 3,
       title: 'Hisense Laser TV - Cinema at Home',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'B71qJ2U9VJM?si=7rSfrcTkKzJ42sYr', // Add YouTube video ID here
       duration: '6:15',
       size: 'medium'
     },
     {
       id: 4,
       title: 'Customer Experience - 3 Months Later',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'KvXLLszrrmo?si=VSmuxw-w7_lGvgGg', // Add YouTube video ID here
       duration: '4:20',
       size: 'small'
     },
     {
       id: 5,
       title: 'Installation Service Review',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'BEAOVJvkUWI?si=xrNEdmuwPlYs2SRP', // Add YouTube video ID here
       duration: '3:55',
       size: 'small'
     },
     {
       id: 6,
       title: 'Complete Purchase Journey Review',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'a7LMtxrjeQw?si=etkk6AndXvizPbT-', // Add YouTube video ID here
       duration: '10:12',
       size: 'small'
     },
     {
       id: 7,
       title: 'After Sales Support Experience',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'A1aklqEfCRM?si=2yDCk8z1Ldvy5K-N', // Add YouTube video ID here
       duration: '5:30',
       size: 'small'
     },
     {
       id: 8,
       title: 'Product Quality Check Review',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'SL6HJJz3bfI?si=a59hd1_qyOrO-g2U', // Add YouTube video ID here
       duration: '7:25',
       size: 'small'
     },
     {
       id: 9,
       title: 'Customer Service Team Review',
-      videoId: '', // Add YouTube video ID here
+      videoId: 'Pf_4SADeSQI?si=JpiG1TnkbeiHwe9q', // Add YouTube video ID here
       duration: '6:18',
       size: 'small'
     }
