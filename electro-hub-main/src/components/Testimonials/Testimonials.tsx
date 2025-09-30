@@ -50,6 +50,30 @@ const Testimonials: React.FC = () => {
       videoId: '',
       duration: '10:12',
       size: 'small'
+    },
+    {
+      id: 7,
+      title: 'After Sales Support Experience',
+      thumbnail: '',
+      videoId: '',
+      duration: '5:30',
+      size: 'small'
+    },
+    {
+      id: 8,
+      title: 'Product Quality Check Review',
+      thumbnail: '',
+      videoId: '',
+      duration: '7:25',
+      size: 'small'
+    },
+    {
+      id: 9,
+      title: 'Customer Service Team Review',
+      thumbnail: '',
+      videoId: '',
+      duration: '6:18',
+      size: 'small'
     }
   ];
 
