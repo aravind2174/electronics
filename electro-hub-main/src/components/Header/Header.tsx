@@ -17,25 +17,16 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo Image Placeholder */}
+          {/* Logo */}
           <div 
             className="flex items-center cursor-pointer"
             onClick={() => onNavigate('home')}
           >
-            <div className="h-12 w-48 bg-gray-100 rounded-md flex items-center justify-center">
-              <img 
-                src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png" // Add your Cloudinary image URL here later
-                alt="Company Logo"
-                className="h-full w-full object-contain"
-                onError={(e) => {
-                  // Show placeholder text when no image
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.nextElementSibling!.classList.remove('hidden');
-                }}
-              />
-              <span className="text-gray-500 font-medium text-sm">Your Logo Here</span>
-            </div>
+            <img 
+              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png"
+              alt="Company Logo"
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Search Bar - Desktop */}
