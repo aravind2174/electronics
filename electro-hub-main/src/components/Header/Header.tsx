@@ -11,21 +11,21 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBrandsDropdownOpen, setIsBrandsDropdownOpen] = useState(false);
+  const { getItemCount } = useCart();
 
   const brands = ['TCL', 'VU TV', 'Hisense'];
 
   const handleBrandClick = (brand: string) => {
-    // You can add brand filtering logic here later
     console.log('Selected brand:', brand);
     setIsBrandsDropdownOpen(false);
-    onNavigate('home'); // Navigate to home with brand filter
+    onNavigate('home');
   };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 h-16 relative">
         <div className="flex items-center justify-between h-full">
-          {/* Logo - Absolute positioned */}
+          {/* Logo */}
           <div 
             className="absolute left-4 top-1/2 transform -translate-y-1/2 cursor-pointer z-10"
             onClick={() => onNavigate('home')}
@@ -37,29 +37,27 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
             />
           </div>
 
-          {/* Spacer for logo area */}
+          {/* Spacer */}
           <div className="w-48"></div>
 
-          {/* Navigation Menu - Desktop */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {/* Brands Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setIsBrandsDropdownOpen(!isBrandsDropdownOpen)}
-                className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
               >
                 <span>Brands</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isBrandsDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className="w-4 h-4" />
               </button>
 
-              {/* Dropdown Menu */}
               {isBrandsDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg py-2 min-w-[120px] z-20">
                   {brands.map((brand) => (
                     <button
                       key={brand}
                       onClick={() => handleBrandClick(brand)}
-                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors"
+                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50"
                     >
                       {brand}
                     </button>
@@ -68,18 +66,16 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
               )}
             </div>
 
-            {/* Recommended for You */}
             <button
               onClick={() => onNavigate('home')}
-              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
             >
               Recommended for You
             </button>
 
-            {/* About Us */}
             <button
               onClick={() => onNavigate('contact')}
-              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
             >
               About Us
             </button>
@@ -87,7 +83,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            {/* Cart */}
             <button 
               onClick={onCartClick}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -100,7 +95,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
               )}
             </button>
 
-            {/* Mobile Menu Toggle */}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -114,7 +108,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t">
             <nav className="space-y-2">
-              {/* Home */}
               <button 
                 onClick={() => {
                   onNavigate('home');
@@ -125,7 +118,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                 Home
               </button>
 
-              {/* Brands - Mobile */}
               <div className="px-4 py-2">
                 <div className="text-gray-700 font-medium mb-2">Brands</div>
                 <div className="ml-4 space-y-1">
@@ -136,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                         handleBrandClick(brand);
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left py-1 text-gray-600 hover:text-blue-600"
+                      className="block w-full text-left py-1 text-gray-600"
                     >
                       {brand}
                     </button>
@@ -144,7 +136,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                 </div>
               </div>
 
-              {/* Recommended for You */}
               <button 
                 onClick={() => {
                   onNavigate('home');
@@ -155,7 +146,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                 Recommended for You
               </button>
 
-              {/* About Us */}
               <button 
                 onClick={() => {
                   onNavigate('contact');
@@ -170,7 +160,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
         )}
       </div>
 
-      {/* Click outside to close dropdown */}
       {isBrandsDropdownOpen && (
         <div 
           className="fixed inset-0 z-10" 
