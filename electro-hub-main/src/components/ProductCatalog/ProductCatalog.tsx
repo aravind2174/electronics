@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { Search, Filter, X } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Search, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '../ProductCard/ProductCard';
 import FilterSidebar from './FilterSidebar';
 import { products } from '../../data/products';
@@ -29,6 +29,8 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
   });
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState<'price_asc' | 'price_desc' | 'rating' | 'name'>('name');
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 9;
 
   // Get unique filter options
   const filterOptions = useMemo(() => ({
@@ -72,6 +74,17 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
     return filtered;
   }, [filters, sortBy]);
 
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const endIndex = startIndex + productsPerPage;
+  const currentProducts = filteredProducts.slice(startIndex, endIndex);
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters, sortBy]);
+
   const updateFilters = (newFilters: Partial<Filters>) => {
     setFilters(prev => ({ ...prev, ...newFilters }));
   };
@@ -94,6 +107,23 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
     filters.priceRange[0] > 0 || 
     filters.priceRange[1] < 500000 ||
     filters.searchQuery !== '';
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -198,24 +228,89 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
               )}
             </div>
 
-            {/* Results Count */}
-            <div className="mb-6">
+            {/* Results Count and Pagination Info */}
+            <div className="mb-6 flex justify-between items-center">
               <p className="text-gray-600">
-                Showing {filteredProducts.length} of {products.length} products
+                Showing {startIndex + 1}-{Math.min(endIndex, filteredProducts.length)} of {filteredProducts.length} products
               </p>
+              {totalPages > 1 && (
+                <p className="text-gray-600 text-sm">
+                  Page {currentPage} of {totalPages}
+                </p>
+              )}
             </div>
 
             {/* Products Grid */}
-            {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onClick={() => onProductClick(product.id)}
-                  />
-                ))}
-              </div>
+            {currentProducts.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+                  {currentProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      onClick={() => onProductClick(product.id)}
+                    />
+                  ))}
+                </div>
+
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <div className="flex justify-center items-center space-x-2">
+                    <button
+                      onClick={goToPrevPage}
+                      disabled={currentPage === 1}
+                      className="flex items-center px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <ChevronLeft className="w-4 h-4 mr-1" />
+                      Previous
+                    </button>
+
+                    <div className="flex space-x-1">
+                      {[...Array(totalPages)].map((_, index) => {
+                        const page = index + 1;
+                        if (
+                          page === 1 ||
+                          page === totalPages ||
+                          (page >= currentPage - 2 && page <= currentPage + 2)
+                        ) {
+                          return (
+                            <button
+                              key={page}
+                              onClick={() => goToPage(page)}
+                              className={`px-3 py-2 rounded-lg ${
+                                currentPage === page
+                                  ? 'bg-blue-600 text-white'
+                                  : 'border border-gray-300 hover:bg-gray-50'
+                              }`}
+                            >
+                              {page}
+                            </button>
+                          );
+                        } else if (
+                          page === currentPage - 3 ||
+                          page === currentPage + 3
+                        ) {
+                          return (
+                            <span key={page} className="px-2 py-2">
+                              ...
+                            </span>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+
+                    <button
+                      onClick={goToNextPage}
+                      disabled={currentPage === totalPages}
+                      className="flex items-center px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Next
+                      <ChevronRight className="w-4 h-4 ml-1" />
+                    </button>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-12">
                 <div className="text-gray-400 mb-4">
