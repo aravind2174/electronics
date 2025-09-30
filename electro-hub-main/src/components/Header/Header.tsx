@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
             onClick={() => onNavigate('home')}
           >
             <img 
-              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759242329/download_sz7i0i.png"
+              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759242449/download-removebg-preview_1_ssh7jg.png"
               alt="Company Logo"
               className="h-32 w-auto object-contain"
             />
