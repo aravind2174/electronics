@@ -1,111 +1,134 @@
 import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 const Testimonials: React.FC = () => {
-  const testimonials = [
+  const videoReviews = [
     {
       id: 1,
-      name: 'Rajesh Kumar',
-      location: 'Mumbai, Maharashtra',
-      rating: 5,
-      comment: 'Outstanding service and product quality! The 65" Samsung QLED I purchased exceeded all expectations. The delivery was prompt and the installation team was professional.',
-      product: 'Samsung 65" QLED 4K Smart TV',
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2'
+      title: 'TCL 65" QLED TV Review - Best Value for Money!',
+      thumbnail: '', // YouTube thumbnail placeholder
+      videoId: '', // YouTube video ID placeholder
+      duration: '8:45',
+      size: 'large' // Different sizes
     },
     {
       id: 2,
-      name: 'Priya Sharma',
-      location: 'Delhi, India',
-      rating: 5,
-      comment: 'The LG OLED TV is a game-changer! The picture quality is absolutely stunning. ElectroHub provided excellent customer service throughout the purchase process.',
-      product: 'LG 55" OLED 4K Smart TV',
-      avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2'
+      title: 'VU TV Unboxing & Setup Experience',
+      thumbnail: '',
+      videoId: '',
+      duration: '12:30',
+      size: 'medium'
     },
     {
       id: 3,
-      name: 'Amit Patel',
-      location: 'Bangalore, Karnataka',
-      rating: 4,
-      comment: 'Great value for money! The Sony TV I bought has amazing features and the smart interface is very user-friendly. Highly recommend ElectroHub!',
-      product: 'Sony 75" LED 4K Smart TV',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2'
+      title: 'Hisense Laser TV - Cinema at Home',
+      thumbnail: '',
+      videoId: '',
+      duration: '6:15',
+      size: 'medium'
+    },
+    {
+      id: 4,
+      title: 'Customer Experience - 3 Months Later',
+      thumbnail: '',
+      videoId: '',
+      duration: '4:20',
+      size: 'small'
+    },
+    {
+      id: 5,
+      title: 'Installation Service Review',
+      thumbnail: '',
+      videoId: '',
+      duration: '3:55',
+      size: 'small'
+    },
+    {
+      id: 6,
+      title: 'Complete Purchase Journey Review',
+      thumbnail: '',
+      videoId: '',
+      duration: '10:12',
+      size: 'small'
     }
   ];
+
+  const getSizeClasses = (size: string) => {
+    switch (size) {
+      case 'large':
+        return 'col-span-2 row-span-2 h-80';
+      case 'medium':
+        return 'col-span-1 row-span-1 h-40';
+      case 'small':
+        return 'col-span-1 row-span-1 h-32';
+      default:
+        return 'col-span-1 row-span-1 h-40';
+    }
+  };
 
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What Our Customers Say
+            Customer Video Reviews
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied customers have to say about their experience with ElectroHub.
+            Watch real customers share their experiences with our products and services
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              {/* Quote Icon */}
-              <div className="flex justify-center mb-4">
-                <Quote className="w-10 h-10 text-blue-600" />
-              </div>
-
-              {/* Rating */}
-              <div className="flex justify-center mb-4">
-                {[...Array(5)].map((_, index) => (
-                  <Star
-                    key={index}
-                    className={`w-5 h-5 ${
-                      index < testimonial.rating
-                        ? 'text-yellow-400 fill-current'
-                        : 'text-gray-300'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              {/* Comment */}
-              <p className="text-gray-700 text-center mb-6 italic">
-                "{testimonial.comment}"
-              </p>
-
-              {/* Customer Info */}
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-full h-full object-cover"
-                  />
+        {/* Video Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-min">
+          {videoReviews.map((video) => (
+            <div 
+              key={video.id} 
+              className={`relative bg-gray-200 rounded-lg overflow-hidden cursor-pointer group hover:shadow-lg transition-all ${getSizeClasses(video.size)}`}
+            >
+              {/* Video Placeholder */}
+              <div className="relative w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
+                  </div>
                 </div>
-                <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                <p className="text-sm text-gray-600 mb-2">{testimonial.location}</p>
-                <p className="text-xs text-blue-600 font-medium">{testimonial.product}</p>
+
+                {/* Duration Badge */}
+                <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
+                  {video.duration}
+                </div>
+
+                {/* Placeholder Text */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-600 text-center opacity-50">
+                  <div className="text-sm font-medium mb-1">YouTube Video</div>
+                  <div className="text-xs">Placeholder</div>
+                </div>
               </div>
+
+              {/* Video Info Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                <h3 className={`text-white font-medium leading-tight ${
+                  video.size === 'large' ? 'text-base' : 'text-sm'
+                }`}>
+                  {video.title}
+                </h3>
+              </div>
+
+              {/* Hover Effect */}
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all"></div>
             </div>
           ))}
         </div>
 
-        {/* Trust Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-3xl font-bold text-blue-600 mb-2">50,000+</div>
-            <p className="text-gray-600">Happy Customers</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-green-600 mb-2">4.8/5</div>
-            <p className="text-gray-600">Average Rating</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-purple-600 mb-2">99%</div>
-            <p className="text-gray-600">Customer Satisfaction</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-red-600 mb-2">1000+</div>
-            <p className="text-gray-600">5-Star Reviews</p>
-          </div>
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-4">
+            Have a review to share? We'd love to feature your experience!
+          </p>
+          <button className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors">
+            Submit Your Video Review
+          </button>
         </div>
       </div>
     </section>
