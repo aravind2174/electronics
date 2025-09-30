@@ -1,8 +1,6 @@
-
 import React, { useState } from 'react';
-import { Search, ShoppingCart, User, Menu, X, Heart } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
-import { useAuth } from '../../context/AuthContext';
 import { Page } from '../../App';
 
 interface HeaderProps {
@@ -14,7 +12,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { getItemCount } = useCart();
-  const { user } = useAuth();
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -47,11 +44,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            {/* Wishlist */}
-            <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-              <Heart className="w-6 h-6 text-gray-600" />
-            </button>
-
             {/* Cart */}
             <button 
               onClick={onCartClick}
@@ -63,15 +55,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                   {getItemCount()}
                 </span>
               )}
-            </button>
-
-            {/* User Account */}
-            <button 
-              onClick={() => onNavigate('account')}
-              className="hidden md:flex items-center space-x-2 p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            >
-              <User className="w-6 h-6 text-gray-600" />
-              {user && <span className="text-sm text-gray-700">{user.name}</span>}
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -119,15 +102,6 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                 className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
               >
                 Contact
-              </button>
-              <button 
-                onClick={() => {
-                  onNavigate('account');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
-              >
-                My Account
               </button>
             </nav>
           </div>
