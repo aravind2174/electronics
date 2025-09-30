@@ -281,7 +281,7 @@ export const products: Product[] = [
     name: 'Hisense 120" Laser TV 4K',
     brand: 'Hisense',
     price: 899999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238198/Hisense_120_Laser_TV_4K_ncw0df.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -304,7 +304,7 @@ export const products: Product[] = [
     name: 'Hisense U7N 55" Mini LED 4K TV',
     brand: 'Hisense',
     price: 79999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238200/Hisense_A6Q_55_UHD_4K_TV_rpgmmp.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -325,7 +325,7 @@ export const products: Product[] = [
     name: 'Hisense U7N 65" Mini LED 4K TV',
     brand: 'Hisense',
     price: 109999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238197/Hisense_U7N_65_Mini_LED_4K_TV_sw9fj6.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -347,7 +347,7 @@ export const products: Product[] = [
     name: 'Hisense U7K 75" Mini LED 4K TV',
     brand: 'Hisense',
     price: 149999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238218/Hisense_U7K_75_Mini_LED_4K_TV_z0fngm.webp',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -368,7 +368,7 @@ export const products: Product[] = [
     name: 'Hisense U7K 85" Mini LED 4K TV',
     brand: 'Hisense',
     price: 199999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238217/Hisense_U7K_85_Mini_LED_4K_TV_vvnit0.webp',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -390,7 +390,7 @@ export const products: Product[] = [
     name: 'Hisense U7Q 100" Mini LED 4K TV',
     brand: 'Hisense',
     price: 349999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238197/Hisense_U7Q_100_Mini_LED_4K_TV_cue4xd.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -413,7 +413,7 @@ export const products: Product[] = [
     name: 'Hisense Q6Q 43" QLED 4K TV',
     brand: 'Hisense',
     price: 39999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238211/Hisense_Q6Q_43_QLED_4K_TV_slptdi.webp',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -433,7 +433,7 @@ export const products: Product[] = [
     name: 'Hisense Q6Q 50" QLED 4K TV',
     brand: 'Hisense',
     price: 49999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238216/Hisense_Q6Q_98_QLED_4K_TV_nxm4ph.webp',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -453,7 +453,7 @@ export const products: Product[] = [
     name: 'Hisense Q6Q 98" QLED 4K TV',
     brand: 'Hisense',
     price: 299999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238216/Hisense_Q6Q_98_QLED_4K_TV_nxm4ph.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -476,7 +476,7 @@ export const products: Product[] = [
     name: 'Hisense E7QPRO 100" ULED 4K TV',
     brand: 'Hisense',
     price: 399999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238210/Hisense_E7QPRO_100_ULED_4K_TV_povwme.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -499,7 +499,7 @@ export const products: Product[] = [
     name: 'Hisense Q7N 100" QLED 4K TV',
     brand: 'Hisense',
     price: 379999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238217/Hisense_Q7N_100_QLED_4K_TV_cxdtfj.jpg',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -521,7 +521,7 @@ export const products: Product[] = [
     name: 'Hisense A6Q 55" UHD 4K TV',
     brand: 'Hisense',
     price: 44999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238200/Hisense_A6Q_55_UHD_4K_TV_rpgmmp.jpg',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -541,7 +541,7 @@ export const products: Product[] = [
     name: 'Hisense A6Q 58" UHD 4K TV',
     brand: 'Hisense',
     price: 49999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238197/Hisense_A6Q_58_UHD_4K_TV_mcy5o8.webp',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -561,7 +561,7 @@ export const products: Product[] = [
     name: 'Hisense A6Q 65" UHD 4K TV',
     brand: 'Hisense',
     price: 59999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238198/Hisense_A6Q_65_UHD_4K_TV_e9vm8b.webp',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -583,7 +583,7 @@ export const products: Product[] = [
     name: 'Hisense E63N 43" UHD 4K TV',
     brand: 'Hisense',
     price: 34999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238210/Hisense_E63N_43_UHD_4K_TV_z4ivjy.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -605,7 +605,7 @@ export const products: Product[] = [
     name: 'Hisense E6N 43" UHD 4K TV',
     brand: 'Hisense',
     price: 32999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238198/Hisense_E6N_43_UHD_4K_TV_di0awi.jpg',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
@@ -626,7 +626,7 @@ export const products: Product[] = [
     name: 'Hisense E6N 55" UHD 4K TV',
     brand: 'Hisense',
     price: 42999,
-    image: 'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238198/Hisense_E6N_55_UHD_4K_TV_t0i0kx.webp',
     images: [
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg',
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg'
@@ -646,7 +646,7 @@ export const products: Product[] = [
     name: 'Hisense E6N 65" UHD 4K TV',
     brand: 'Hisense',
     price: 54999,
-    image: 'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238208/Hisense_E6N_65_UHD_4K_TV_qrqwiv.webp',
     images: [
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg',
       'https://images.pexels.com/photos/1545588/pexels-photo-1545588.jpeg'
@@ -668,7 +668,7 @@ export const products: Product[] = [
     name: 'Hisense A4G 32" Smart TV',
     brand: 'Hisense',
     price: 18999,
-    image: 'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
+    image: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759238197/Hisense_A4G_32_Smart_TV_ahol4r.webp',
     images: [
       'https://images.pexels.com/photos/1092637/pexels-photo-1092637.jpeg',
       'https://images.pexels.com/photos/1682828/pexels-photo-1682828.jpeg'
