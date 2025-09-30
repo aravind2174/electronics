@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, ShoppingCart, User, Menu, X, Heart } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
