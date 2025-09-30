@@ -1,77 +1,67 @@
 import React from 'react';
-import { Play } from 'lucide-react';
 
 const Testimonials: React.FC = () => {
   const videoReviews = [
     {
       id: 1,
       title: 'TCL 65" QLED TV Review - Best Value for Money!',
-      thumbnail: '', // YouTube thumbnail placeholder
-      videoId: '', // YouTube video ID placeholder
+      videoId: 'IOZKsjrFTlA?si=BozSX3mMNctxDobM', // Add YouTube video ID here (e.g., 'dQw4w9WgXcQ')
       duration: '8:45',
-      size: 'large' // Different sizes
+      size: 'large'
     },
     {
       id: 2,
       title: 'VU TV Unboxing & Setup Experience',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '12:30',
       size: 'medium'
     },
     {
       id: 3,
       title: 'Hisense Laser TV - Cinema at Home',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '6:15',
       size: 'medium'
     },
     {
       id: 4,
       title: 'Customer Experience - 3 Months Later',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '4:20',
       size: 'small'
     },
     {
       id: 5,
       title: 'Installation Service Review',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '3:55',
       size: 'small'
     },
     {
       id: 6,
       title: 'Complete Purchase Journey Review',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '10:12',
       size: 'small'
     },
     {
       id: 7,
       title: 'After Sales Support Experience',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '5:30',
       size: 'small'
     },
     {
       id: 8,
       title: 'Product Quality Check Review',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '7:25',
       size: 'small'
     },
     {
       id: 9,
       title: 'Customer Service Team Review',
-      thumbnail: '',
-      videoId: '',
+      videoId: '', // Add YouTube video ID here
       duration: '6:18',
       size: 'small'
     }
@@ -107,40 +97,54 @@ const Testimonials: React.FC = () => {
           {videoReviews.map((video) => (
             <div 
               key={video.id} 
-              className={`relative bg-gray-200 rounded-lg overflow-hidden cursor-pointer group hover:shadow-lg transition-all ${getSizeClasses(video.size)}`}
+              className={`relative rounded-lg overflow-hidden group hover:shadow-lg transition-all ${getSizeClasses(video.size)}`}
             >
-              {/* Video Placeholder */}
-              <div className="relative w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
+              {/* YouTube iframe or Placeholder */}
+              {video.videoId ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.videoId}`}
+                  title={video.title}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                /* Placeholder for when no video ID is provided */
+                <div className="relative w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                  <div className="text-gray-600 text-center opacity-75">
+                    <div className="text-sm font-medium mb-1">YouTube Video</div>
+                    <div className="text-xs">Add video ID</div>
+                  </div>
+                  
+                  {/* Duration Badge for placeholder */}
+                  <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
+                    {video.duration}
                   </div>
                 </div>
+              )}
 
-                {/* Duration Badge */}
-                <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
-                  {video.duration}
+              {/* Video Info Overlay - Only show for placeholder */}
+              {!video.videoId && (
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                  <h3 className={`text-white font-medium leading-tight ${
+                    video.size === 'large' ? 'text-base' : 'text-sm'
+                  }`}>
+                    {video.title}
+                  </h3>
                 </div>
+              )}
 
-                {/* Placeholder Text */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-600 text-center opacity-50">
-                  <div className="text-sm font-medium mb-1">YouTube Video</div>
-                  <div className="text-xs">Placeholder</div>
+              {/* Title overlay for iframes (optional) */}
+              {video.videoId && (
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-transparent to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <h3 className={`text-white font-medium leading-tight ${
+                    video.size === 'large' ? 'text-sm' : 'text-xs'
+                  }`}>
+                    {video.title}
+                  </h3>
                 </div>
-              </div>
-
-              {/* Video Info Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
-                <h3 className={`text-white font-medium leading-tight ${
-                  video.size === 'large' ? 'text-base' : 'text-sm'
-                }`}>
-                  {video.title}
-                </h3>
-              </div>
-
-              {/* Hover Effect */}
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all"></div>
+              )}
             </div>
           ))}
         </div>
