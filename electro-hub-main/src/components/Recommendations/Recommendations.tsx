@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DollarSign, Settings, Monitor, RefreshCw } from 'lucide-react';
+import { DollarSign, Settings, Monitor } from 'lucide-react';
 import ProductCard from '../ProductCard/ProductCard';
 import { products } from '../../data/products';
 import { Product } from '../../types';
@@ -24,10 +24,6 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onProductClick }) => 
     }
   };
 
-  const resetFilters = () => {
-    setActiveFilter(null);
-  };
-
   const filteredProducts = getFilteredProducts();
 
   return (
@@ -48,8 +44,8 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onProductClick }) => 
             onClick={() => setActiveFilter('price')}
             className={`flex items-center px-6 py-3 rounded-full font-semibold transition-all ${
               activeFilter === 'price'
-                ? 'bg-blue-600 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-green-600 text-white shadow-lg'
+                : 'bg-gray-100 text-gray-700 hover:bg-green-100 hover:text-green-700'
             }`}
           >
             <DollarSign className="w-5 h-5 mr-2" />
@@ -61,7 +57,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onProductClick }) => 
             className={`flex items-center px-6 py-3 rounded-full font-semibold transition-all ${
               activeFilter === 'features'
                 ? 'bg-blue-600 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700'
             }`}
           >
             <Settings className="w-5 h-5 mr-2" />
@@ -72,23 +68,13 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onProductClick }) => 
             onClick={() => setActiveFilter('screen')}
             className={`flex items-center px-6 py-3 rounded-full font-semibold transition-all ${
               activeFilter === 'screen'
-                ? 'bg-blue-600 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-yellow-500 text-white shadow-lg'
+                : 'bg-gray-100 text-gray-700 hover:bg-yellow-100 hover:text-yellow-700'
             }`}
           >
             <Monitor className="w-5 h-5 mr-2" />
             Premium Display
           </button>
-          
-          {activeFilter && (
-            <button
-              onClick={resetFilters}
-              className="flex items-center px-6 py-3 rounded-full font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-all"
-            >
-              <RefreshCw className="w-5 h-5 mr-2" />
-              Reset
-            </button>
-          )}
         </div>
 
         {/* Products Grid */}
