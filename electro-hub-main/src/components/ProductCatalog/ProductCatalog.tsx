@@ -7,6 +7,7 @@ import { Product } from '../../types';
 
 interface ProductCatalogProps {
   onProductClick: (productId: string) => void;
+  selectedBrand?: string;
 }
 
 interface Filters {
@@ -18,7 +19,7 @@ interface Filters {
   searchQuery: string;
 }
 
-const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
+const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick, selectedBrand = '' }) => {
   const [filters, setFilters] = useState<Filters>({
     brands: [],
     sizes: [],
@@ -31,6 +32,16 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
   const [sortBy, setSortBy] = useState<'price_asc' | 'price_desc' | 'rating' | 'name'>('name');
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
+
+  // Apply selectedBrand filter when it changes
+  useEffect(() => {
+    if (selectedBrand && selectedBrand !== '') {
+      setFilters(prev => ({
+        ...prev,
+        brands: [selectedBrand]
+      }));
+    }
+  }, [selectedBrand]);
 
   // Get unique filter options
   const filterOptions = useMemo(() => ({
@@ -147,7 +158,7 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
               <Filter className="w-5 h-5 mr-2" />
               Filters
               {hasActiveFilters && (
-                <span className="ml-2 px-2 py-1 bg-blue-600 text-white text-xs rounded-full">
+                <span className="ml-2 px-2 py-1 text-white text-xs rounded-full" style={{ backgroundColor: '#179E42' }}>
                   Active
                 </span>
               )}
@@ -179,7 +190,16 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
                     placeholder="Search products..."
                     value={filters.searchQuery}
                     onChange={(e) => updateFilters({ searchQuery: e.target.value })}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent"
+                    style={{ 
+                      '--tw-ring-color': '#179E42'
+                    } as React.CSSProperties}
+                    onFocus={(e) => {
+                      e.target.style.boxShadow = `0 0 0 2px #179E42`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.boxShadow = '';
+                    }}
                   />
                 </div>
 
@@ -189,7 +209,16 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
-                    className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                    className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:border-transparent"
+                    style={{ 
+                      '--tw-ring-color': '#179E42'
+                    } as React.CSSProperties}
+                    onFocus={(e) => {
+                      e.target.style.boxShadow = `0 0 0 2px #179E42`;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.boxShadow = '';
+                    }}
                   >
                     <option value="name">Name</option>
                     <option value="price_asc">Price: Low to High</option>
@@ -203,11 +232,11 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
               {hasActiveFilters && (
                 <div className="mt-4 flex flex-wrap gap-2">
                   {filters.brands.map(brand => (
-                    <span key={brand} className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                    <span key={brand} className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">
                       {brand}
                       <button
                         onClick={() => updateFilters({ brands: filters.brands.filter(b => b !== brand) })}
-                        className="ml-2 hover:text-blue-600"
+                        className="ml-2 hover:text-green-600"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -279,9 +308,12 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
                               onClick={() => goToPage(page)}
                               className={`px-3 py-2 rounded-lg ${
                                 currentPage === page
-                                  ? 'bg-blue-600 text-white'
+                                  ? 'text-white'
                                   : 'border border-gray-300 hover:bg-gray-50'
                               }`}
+                              style={{
+                                backgroundColor: currentPage === page ? '#179E42' : undefined
+                              }}
                             >
                               {page}
                             </button>
@@ -320,7 +352,8 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick }) => {
                 <p className="text-gray-600 mb-4">Try adjusting your filters or search terms</p>
                 <button
                   onClick={clearFilters}
-                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="px-6 py-2 text-white rounded-lg hover:opacity-90 transition-colors"
+                  style={{ backgroundColor: '#179E42' }}
                 >
                   Clear all filters
                 </button>
