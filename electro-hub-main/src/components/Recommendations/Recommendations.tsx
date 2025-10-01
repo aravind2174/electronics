@@ -5,7 +5,7 @@ import { products } from '../../data/products';
 import { Product } from '../../types';
 
 interface RecommendationsProps {
-  onProductClick?: (productId: string) => void;
+  onProductClick: (productId: string) => void; // Made required instead of optional
 }
 
 const Recommendations: React.FC<RecommendationsProps> = ({ onProductClick }) => {
@@ -83,7 +83,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({ onProductClick }) => 
             <ProductCard
               key={product.id}
               product={product}
-              onClick={() => onProductClick?.(product.id)}
+              onClick={() => onProductClick(product.id)} // Removed optional chaining since it's now required
             />
           ))}
         </div>
