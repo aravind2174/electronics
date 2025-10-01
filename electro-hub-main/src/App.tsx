@@ -16,44 +16,88 @@ import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { WishlistProvider } from './context/WishlistContext';
 
-export type Page = 'home' | 'product' | 'checkout' | 'contact' | 'account';
+// Keep only the overlay/modal pages that need separate views
+export type OverlayPage = 'product' | 'checkout' | 'contact' | 'account';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+  // State for overlay pages (product details, checkout, etc.)
+  const [currentOverlay, setCurrentOverlay] = useState<OverlayPage | null>(null);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  
+  // State for brand filtering
+  const [selectedBrand, setSelectedBrand] = useState<string>('');
 
   const handleProductClick = (productId: string) => {
     setSelectedProductId(productId);
-    setCurrentPage('product');
+    setCurrentOverlay('product');
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
+  const handleBrandFilter = (brand: string) => {
+    setSelectedBrand(brand);
+    // Scroll to product catalog section after filtering
+    const element = document.getElementById('product-catalog');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  const closeOverlay = () => {
+    setCurrentOverlay(null);
+    setSelectedProductId(null);
+  };
+
+  const handleFooterNavigate = (page: string) => {
+    switch (page) {
+      case 'contact':
+        setCurrentOverlay('contact');
+        break;
+      case 'account':
+        setCurrentOverlay('account');
+        break;
+      default:
+        // For other footer links, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const renderOverlay = () => {
+    if (!currentOverlay) return null;
+
+    switch (currentOverlay) {
       case 'product':
         return (
-          <ProductDetails 
-            productId={selectedProductId!}
-            onBack={() => setCurrentPage('home')}
-            onRelatedProductClick={handleProductClick}
-          />
+          <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+            <ProductDetails 
+              productId={selectedProductId!}
+              onBack={closeOverlay}
+              onRelatedProductClick={handleProductClick}
+            />
+          </div>
         );
       case 'checkout':
-        return <Checkout onBack={() => setCurrentPage('home')} />;
-      case 'contact':
-        return <Contact onBack={() => setCurrentPage('home')} />;
-      case 'account':
-        return <UserAccount onBack={() => setCurrentPage('home')} />;
-      default:
         return (
-          <>
-            <Hero />
-            <Recommendations />
-            <ProductCatalog onProductClick={handleProductClick} />
-            <Testimonials />
-            <SocialProof />
-          </>
+          <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+            <Checkout onBack={closeOverlay} />
+          </div>
         );
+      case 'contact':
+        return (
+          <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+            <Contact onBack={closeOverlay} />
+          </div>
+        );
+      case 'account':
+        return (
+          <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+            <UserAccount onBack={closeOverlay} />
+          </div>
+        );
+      default:
+        return null;
     }
   };
 
@@ -64,21 +108,54 @@ function App() {
           <div className="min-h-screen bg-gray-50">
             <Header 
               onCartClick={() => setIsCartOpen(true)}
-              onNavigate={setCurrentPage}
+              onBrandFilter={handleBrandFilter}
             />
             
-            {renderPage()}
+            {/* Main Landing Page Content */}
+            <main>
+              {/* Hero Section */}
+              <section id="hero">
+                <Hero />
+              </section>
+
+              {/* Recommendations Section */}
+              <section id="recommendations">
+                <Recommendations />
+              </section>
+
+              {/* Product Catalog Section */}
+              <section id="product-catalog">
+                <ProductCatalog 
+                  onProductClick={handleProductClick}
+                  selectedBrand={selectedBrand}
+                />
+              </section>
+
+              {/* Testimonials Section */}
+              <section id="testimonials">
+                <Testimonials />
+              </section>
+
+              {/* Social Proof Section */}
+              <section id="social-proof">
+                <SocialProof />
+              </section>
+            </main>
             
-            {currentPage === 'home' && <Footer onNavigate={setCurrentPage} />}
+            <Footer onNavigate={handleFooterNavigate} />
             
+            {/* Cart Component */}
             <Cart 
               isOpen={isCartOpen}
               onClose={() => setIsCartOpen(false)}
               onCheckout={() => {
                 setIsCartOpen(false);
-                setCurrentPage('checkout');
+                setCurrentOverlay('checkout');
               }}
             />
+            
+            {/* Overlay Pages */}
+            {renderOverlay()}
             
             <Chatbot />
           </div>
