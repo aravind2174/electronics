@@ -1,8 +1,7 @@
 import React from 'react';
-import { Heart, ShoppingCart, Star, Tag } from 'lucide-react';
+import { ShoppingCart, Star, Tag } from 'lucide-react';
 import { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
-import { useWishlist } from '../../context/WishlistContext';
 
 interface ProductCardProps {
   product: Product;
@@ -11,20 +10,10 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const { addToCart } = useCart();
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     addToCart(product);
-  };
-
-  const handleWishlistToggle = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (isInWishlist(product.id)) {
-      removeFromWishlist(product.id);
-    } else {
-      addToWishlist(product);
-    }
   };
 
   return (
@@ -39,32 +28,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
           alt={product.name}
           className="w-full h-full object-cover"
         />
-        
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {product.isNew && (
-            <span className="px-2 py-1 bg-green-500 text-white text-xs font-semibold rounded-md">
-              NEW
-            </span>
-          )}
-          {product.originalPrice && (
-            <span className="px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-md">
-              SALE
-            </span>
-          )}
-        </div>
-
-        {/* Wishlist Button */}
-        <button
-          onClick={handleWishlistToggle}
-          className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all ${
-            isInWishlist(product.id)
-              ? 'bg-red-500 text-white'
-              : 'bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white'
-          }`}
-        >
-          <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
-        </button>
       </div>
 
       {/* Product Details */}
@@ -80,7 +43,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
         </div>
 
         {/* Product Name */}
-        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#179E42] transition-colors">
           {product.name}
         </h3>
 
