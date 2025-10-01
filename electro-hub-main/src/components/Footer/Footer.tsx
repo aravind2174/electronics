@@ -156,58 +156,28 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 {/* VISA */}
                 <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-gray-700 transition-colors">
                   <img 
-                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300397/Visa_Inc._logo_smltva.svg" // Add VISA logo URL here
+                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300397/Visa_Inc._logo_smltva.svg"
                     alt="VISA"
-                    className="max-w-full max-h-full object-contain"
-                    style={{ 
-                      backgroundColor: '#f3f4f6', 
-                      minWidth: '32px',
-                      minHeight: '20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
+                    className="max-w-full max-h-full object-contain p-1"
                   />
-                  {/* Fallback text */}
-                  <span className="text-xs text-gray-400">VISA</span>
                 </div>
 
                 {/* UPI */}
                 <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-gray-700 transition-colors">
                   <img 
-                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300405/free-upi-logo-icon-svg-download-png-1747946_zacoen.webp" // Add UPI logo URL here
+                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300405/free-upi-logo-icon-svg-download-png-1747946_zacoen.webp"
                     alt="UPI"
-                    className="max-w-full max-h-full object-contain"
-                    style={{ 
-                      backgroundColor: '#f3f4f6', 
-                      minWidth: '32px',
-                      minHeight: '20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
+                    className="max-w-full max-h-full object-contain p-1"
                   />
-                  {/* Fallback text */}
-                  <span className="text-xs text-gray-400">UPI</span>
                 </div>
 
                 {/* PayTM */}
                 <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-gray-700 transition-colors">
                   <img 
-                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300424/paytm_j2ehgo.png" // Add PayTM logo URL here
+                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300424/paytm_j2ehgo.png"
                     alt="PayTM"
-                    className="max-w-full max-h-full object-contain"
-                    style={{ 
-                      backgroundColor: '#f3f4f6', 
-                      minWidth: '32px',
-                      minHeight: '20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
+                    className="max-w-full max-h-full object-contain p-1"
                   />
-                  {/* Fallback text */}
-                  <span className="text-xs text-gray-400">PayTM</span>
                 </div>
               </div>
             </div>
