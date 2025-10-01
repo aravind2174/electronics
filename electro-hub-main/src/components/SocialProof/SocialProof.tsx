@@ -93,7 +93,7 @@ const SocialProof: React.FC = () => {
           <div className="relative max-w-6xl mx-auto h-[600px] flex items-center justify-center">
             {/* Central Image - Absolute positioned and bigger */}
             <img 
-              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759298002/istockphoto-1209903143-612x612-removebg-preview_ducr7v.png"
+              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300996/istockphoto-1209903143-612x612-removebg-preview_1_pdd7yh.jpg"
               alt="Why Choose Us"
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 object-contain z-10"
             />
