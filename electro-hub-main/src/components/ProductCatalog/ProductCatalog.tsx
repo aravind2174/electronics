@@ -119,9 +119,18 @@ const ProductCatalog: React.FC<ProductCatalogProps> = ({ onProductClick, selecte
     filters.priceRange[1] < 500000 ||
     filters.searchQuery !== '';
 
+  // FIXED: Scroll to product catalog section instead of page top
   const goToPage = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Scroll to the product catalog section, not the top of the page
+    const element = document.getElementById('product-catalog');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   const goToPrevPage = () => {
