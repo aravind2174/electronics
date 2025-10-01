@@ -6,9 +6,10 @@ import { Page } from '../../App';
 interface HeaderProps {
   onCartClick: () => void;
   onNavigate: (page: Page) => void;
+  onBrandFilter?: (brand: string) => void; // Add this prop for brand filtering
 }
 
-const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
+const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate, onBrandFilter }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBrandsDropdownOpen, setIsBrandsDropdownOpen] = useState(false);
   const { getItemCount } = useCart();
@@ -18,6 +19,13 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
   const handleBrandClick = (brand: string) => {
     console.log('Selected brand:', brand);
     setIsBrandsDropdownOpen(false);
+    
+    // Call the brand filter function if provided
+    if (onBrandFilter) {
+      onBrandFilter(brand);
+    }
+    
+    // Navigate to home to show filtered results
     onNavigate('home');
   };
 
@@ -45,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
             <div className="relative">
               <button
                 onClick={() => setIsBrandsDropdownOpen(!isBrandsDropdownOpen)}
-                className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
+                className="flex items-center space-x-1 px-3 py-2 text-gray-700 hover:text-[#179E42] font-medium transition-colors"
               >
                 <span>Brands</span>
                 <ChevronDown className="w-4 h-4" />
@@ -57,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                     <button
                       key={brand}
                       onClick={() => handleBrandClick(brand)}
-                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50"
+                      className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-[#179E42] hover:text-white transition-colors"
                     >
                       {brand}
                     </button>
@@ -68,14 +76,14 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
 
             <button
               onClick={() => onNavigate('home')}
-              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
+              className="px-3 py-2 text-gray-700 hover:text-[#179E42] font-medium transition-colors"
             >
               Recommended for You
             </button>
 
             <button
               onClick={() => onNavigate('contact')}
-              className="px-3 py-2 text-gray-700 hover:text-blue-600 font-medium"
+              className="px-3 py-2 text-gray-700 hover:text-[#179E42] font-medium transition-colors"
             >
               About Us
             </button>
@@ -85,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
           <div className="flex items-center space-x-4">
             <button 
               onClick={onCartClick}
-              className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="relative p-2 hover:bg-[#179E42]/10 rounded-lg transition-colors"
             >
               <ShoppingCart className="w-6 h-6 text-gray-600" />
               {getItemCount() > 0 && (
@@ -97,7 +105,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
 
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="md:hidden p-2 hover:bg-[#179E42]/10 rounded-lg transition-colors"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -113,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                   onNavigate('home');
                   setIsMobileMenuOpen(false);
                 }}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-[#179E42]/10 hover:text-[#179E42] rounded-lg transition-colors"
               >
                 Home
               </button>
@@ -128,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                         handleBrandClick(brand);
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left py-1 text-gray-600"
+                      className="block w-full text-left py-1 text-gray-600 hover:text-[#179E42] transition-colors"
                     >
                       {brand}
                     </button>
@@ -141,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                   onNavigate('home');
                   setIsMobileMenuOpen(false);
                 }}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-[#179E42]/10 hover:text-[#179E42] rounded-lg transition-colors"
               >
                 Recommended for You
               </button>
@@ -151,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({ onCartClick, onNavigate }) => {
                   onNavigate('contact');
                   setIsMobileMenuOpen(false);
                 }}
-                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg"
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-[#179E42]/10 hover:text-[#179E42] rounded-lg transition-colors"
               >
                 About Us
               </button>
