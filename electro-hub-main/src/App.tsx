@@ -13,7 +13,7 @@ import Contact from './components/Contact/Contact';
 import UserAccount from './components/UserAccount/UserAccount';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
-import { WishlistProvider } from './context/WishlistProvider';
+import { WishlistProvider } from './context/WishlistContext';
 
 // Keep only the overlay/modal pages that need separate views
 export type OverlayPage = 'product' | 'checkout' | 'contact' | 'account';
