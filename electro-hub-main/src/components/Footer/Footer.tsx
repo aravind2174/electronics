@@ -13,15 +13,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4 relative">
-            {/* Logo Image - Absolute positioned */}
+            {/* Logo Image - Aligned with headers */}
             <img 
               src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png"
               alt="Company Logo"
-              className="absolute top-0 left-0 h-32 w-auto object-contain z-10"
+              className="h-24 w-auto object-contain mb-2"
             />
-            
-            {/* Spacer for logo area */}
-            <div className="h-24 w-full"></div>
             
             <p className="text-gray-400 leading-relaxed">
               Your trusted partner for premium televisions and home entertainment solutions. 
@@ -152,13 +149,66 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Trust Badges */}
+            {/* Payment Methods */}
             <div className="mt-6">
               <h4 className="text-sm font-semibold text-white mb-3">We Accept</h4>
-              <div className="flex space-x-2">
-                <div className="px-2 py-1 bg-gray-800 rounded text-xs">VISA</div>
-                <div className="px-2 py-1 bg-gray-800 rounded text-xs">UPI</div>
-                <div className="px-2 py-1 bg-gray-800 rounded text-xs">PayTM</div>
+              <div className="flex space-x-3">
+                {/* VISA */}
+                <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-gray-700 transition-colors">
+                  <img 
+                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300397/Visa_Inc._logo_smltva.svg" // Add VISA logo URL here
+                    alt="VISA"
+                    className="max-w-full max-h-full object-contain"
+                    style={{ 
+                      backgroundColor: '#f3f4f6', 
+                      minWidth: '32px',
+                      minHeight: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  />
+                  {/* Fallback text */}
+                  <span className="text-xs text-gray-400">VISA</span>
+                </div>
+
+                {/* UPI */}
+                <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-gray-700 transition-colors">
+                  <img 
+                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300405/free-upi-logo-icon-svg-download-png-1747946_zacoen.webp" // Add UPI logo URL here
+                    alt="UPI"
+                    className="max-w-full max-h-full object-contain"
+                    style={{ 
+                      backgroundColor: '#f3f4f6', 
+                      minWidth: '32px',
+                      minHeight: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  />
+                  {/* Fallback text */}
+                  <span className="text-xs text-gray-400">UPI</span>
+                </div>
+
+                {/* PayTM */}
+                <div className="w-12 h-8 bg-gray-800 rounded flex items-center justify-center hover:bg-gray-700 transition-colors">
+                  <img 
+                    src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759300424/paytm_j2ehgo.png" // Add PayTM logo URL here
+                    alt="PayTM"
+                    className="max-w-full max-h-full object-contain"
+                    style={{ 
+                      backgroundColor: '#f3f4f6', 
+                      minWidth: '32px',
+                      minHeight: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  />
+                  {/* Fallback text */}
+                  <span className="text-xs text-gray-400">PayTM</span>
+                </div>
               </div>
             </div>
           </div>
