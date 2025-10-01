@@ -11,7 +11,6 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import Checkout from './components/Checkout/Checkout';
 import Contact from './components/Contact/Contact';
 import UserAccount from './components/UserAccount/UserAccount';
-import Chatbot from './components/Chatbot/Chatbot';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { WishlistProvider } from './context/WishlistContext';
@@ -156,8 +155,6 @@ function App() {
             
             {/* Overlay Pages */}
             {renderOverlay()}
-            
-            <Chatbot />
           </div>
         </WishlistProvider>
       </CartProvider>
