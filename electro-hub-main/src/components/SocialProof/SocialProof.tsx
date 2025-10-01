@@ -41,7 +41,20 @@ const SocialProof: React.FC = () => {
     }
   ];
 
-  const partners = ['TCL', 'VU TV', 'Hisense'];
+  const partners = [
+    { 
+      name: 'TCL', 
+      logo: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759299436/brand-tcl_joxmp4.webp' // Add TCL logo URL here
+    },
+    { 
+      name: 'VU TV', 
+      logo: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759299495/Vu_Televisions_rxsumf.png' // Add VU TV logo URL here
+    },
+    { 
+      name: 'Hisense', 
+      logo: 'https://res.cloudinary.com/dhn6uszk0/image/upload/v1759299527/Hisense_i7pafh.svg' // Add Hisense logo URL here
+    }
+  ];
 
   const getPositionStyles = (position: string) => {
     const styles: Record<string, string> = {
@@ -119,17 +132,28 @@ const SocialProof: React.FC = () => {
           </div>
         </div>
 
-        {/* Partner Brands - Simplified */}
+        {/* Partner Brands - Logo Placeholders */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Authorized Dealer
           </h3>
           
-          <div className="flex items-center justify-center space-x-12">
+          <div className="flex items-center justify-center space-x-16">
             {partners.map((partner, index) => (
-              <div key={index} className="text-center">
-                <div className="w-24 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-green-100 hover:border-green-200 border border-transparent transition-all duration-300 cursor-pointer">
-                  <span className="text-lg font-bold text-gray-700 hover:text-green-700 transition-colors">{partner}</span>
+              <div key={index} className="text-center group">
+                <div className="w-32 h-20 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-green-50 hover:border-green-200 border border-gray-200 transition-all duration-300 cursor-pointer group-hover:shadow-md">
+                  {partner.logo ? (
+                    <img 
+                      src={partner.logo}
+                      alt={`${partner.name} Logo`}
+                      className="max-w-full max-h-full object-contain p-2"
+                    />
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-sm font-medium text-gray-500 mb-1">Logo Placeholder</div>
+                      <div className="text-xs text-gray-400">{partner.name}</div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
