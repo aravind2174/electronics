@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover"
         />
         
         {/* Badges */}
@@ -65,17 +65,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
         >
           <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
         </button>
-
-        {/* Quick Add to Cart */}
-        <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button
-            onClick={handleAddToCart}
-            className="w-full flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
-          >
-            <ShoppingCart className="w-4 h-4 mr-2" />
-            Add to Cart
-          </button>
-        </div>
       </div>
 
       {/* Product Details */}
@@ -108,22 +97,35 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
           ))}
         </div>
 
-        {/* Price */}
+        {/* Price and Add to Cart */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-gray-900">
-              ₹{product.price.toLocaleString()}
-            </span>
-            {product.originalPrice && (
-              <span className="text-sm text-gray-500 line-through">
-                ₹{product.originalPrice.toLocaleString()}
+          <div>
+            <div className="flex items-center space-x-2">
+              <span className="text-xl font-bold text-gray-900">
+                ₹{product.price.toLocaleString()}
               </span>
+              {product.originalPrice && (
+                <span className="text-sm text-gray-500 line-through">
+                  ₹{product.originalPrice.toLocaleString()}
+                </span>
+              )}
+            </div>
+            
+            {!product.inStock && (
+              <span className="text-sm text-red-600 font-medium mt-1">Out of Stock</span>
             )}
           </div>
-          
-          {!product.inStock && (
-            <span className="text-sm text-red-600 font-medium">Out of Stock</span>
-          )}
+
+          {/* Add to Cart Button - appears on hover */}
+          <button
+            onClick={handleAddToCart}
+            className="flex items-center px-3 py-2 text-white font-medium rounded-lg transition-all opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0"
+            style={{ backgroundColor: '#179E42' }}
+            disabled={!product.inStock}
+          >
+            <ShoppingCart className="w-4 h-4 mr-1" />
+            Add to Cart
+          </button>
         </div>
 
         {/* Screen Type & Resolution */}
