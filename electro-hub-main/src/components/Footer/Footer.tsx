@@ -9,18 +9,20 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-gray-900 text-gray-300">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            {/* Logo Image */}
-            <div className="flex items-center">
-              <img 
-                src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png"
-                alt="Company Logo"
-                className="h-24 w-auto object-contain"
-              />
-            </div>
+          <div className="space-y-4 relative">
+            {/* Logo Image - Absolute positioned */}
+            <img 
+              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png"
+              alt="Company Logo"
+              className="absolute top-0 left-0 h-32 w-auto object-contain z-10"
+            />
+            
+            {/* Spacer for logo area */}
+            <div className="h-24 w-full"></div>
+            
             <p className="text-gray-400 leading-relaxed">
               Your trusted partner for premium televisions and home entertainment solutions. 
               We bring you the latest technology at unbeatable prices.
