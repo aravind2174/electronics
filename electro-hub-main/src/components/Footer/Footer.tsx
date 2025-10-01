@@ -13,11 +13,13 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
+            {/* Logo Image */}
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-xl">TV</span>
-              </div>
-              <span className="text-2xl font-bold text-white">ElectroHub</span>
+              <img 
+                src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759241379/fa3854a1eeefe9862b10a80e1f072641-removebg-preview_pkq5d3.png"
+                alt="Company Logo"
+                className="h-24 w-auto object-contain"
+              />
             </div>
             <p className="text-gray-400 leading-relaxed">
               Your trusted partner for premium televisions and home entertainment solutions. 
