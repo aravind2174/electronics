@@ -45,14 +45,26 @@ const SocialProof: React.FC = () => {
 
   const getPositionStyles = (position: string) => {
     const styles: Record<string, string> = {
-      'left-top': 'absolute top-0 left-0 transform -translate-x-4 -translate-y-4',
+      'left-top': 'absolute top-8 left-0 transform -translate-x-4',
       'left-middle': 'absolute top-1/2 left-0 transform -translate-x-8 -translate-y-1/2',
-      'left-bottom': 'absolute bottom-0 left-0 transform -translate-x-4 translate-y-4',
-      'right-top': 'absolute top-0 right-0 transform translate-x-4 -translate-y-4',
+      'left-bottom': 'absolute bottom-8 left-0 transform -translate-x-4',
+      'right-top': 'absolute top-8 right-0 transform translate-x-4',
       'right-middle': 'absolute top-1/2 right-0 transform translate-x-8 -translate-y-1/2',
-      'right-bottom': 'absolute bottom-0 right-0 transform translate-x-4 translate-y-4'
+      'right-bottom': 'absolute bottom-8 right-0 transform translate-x-4'
     };
     return styles[position] || '';
+  };
+
+  const getLineStyles = (position: string) => {
+    const lineStyles: Record<string, string> = {
+      'left-top': 'absolute right-0 top-8 w-20 h-0.5 bg-gradient-to-r from-green-300 to-transparent transform translate-x-16 rotate-12',
+      'left-middle': 'absolute right-0 top-1/2 w-20 h-0.5 bg-gradient-to-r from-green-300 to-transparent transform translate-x-16 -translate-y-1/2',
+      'left-bottom': 'absolute right-0 bottom-8 w-20 h-0.5 bg-gradient-to-r from-green-300 to-transparent transform translate-x-16 -rotate-12',
+      'right-top': 'absolute left-0 top-8 w-20 h-0.5 bg-gradient-to-l from-green-300 to-transparent transform -translate-x-16 -rotate-12',
+      'right-middle': 'absolute left-0 top-1/2 w-20 h-0.5 bg-gradient-to-l from-green-300 to-transparent transform -translate-x-16 -translate-y-1/2',
+      'right-bottom': 'absolute left-0 bottom-8 w-20 h-0.5 bg-gradient-to-l from-green-300 to-transparent transform -translate-x-16 rotate-12'
+    };
+    return lineStyles[position] || '';
   };
 
   return (
@@ -66,22 +78,12 @@ const SocialProof: React.FC = () => {
           
           {/* Circular Container */}
           <div className="relative max-w-6xl mx-auto h-[600px] flex items-center justify-center">
-            {/* Central Image */}
-            <div className="relative z-10 w-80 h-80 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center shadow-2xl">
-              <img 
-                src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759298002/istockphoto-1209903143-612x612-removebg-preview_ducr7v.png" // Add your central image URL here
-                alt="Why Choose Us"
-                className="w-64 h-64 object-contain rounded-full"
-                style={{ 
-                  backgroundColor: '#f3f4f6', 
-                  border: '2px dashed #d1d5db'
-                }}
-              />
-              {/* Placeholder text when no image */}
-              <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-medium">
-                Central Image
-              </div>
-            </div>
+            {/* Central Image - Absolute positioned and bigger */}
+            <img 
+              src="https://res.cloudinary.com/dhn6uszk0/image/upload/v1759298002/istockphoto-1209903143-612x612-removebg-preview_ducr7v.png"
+              alt="Why Choose Us"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 object-contain z-10"
+            />
 
             {/* Floating Features */}
             {features.map((feature, index) => {
@@ -91,15 +93,15 @@ const SocialProof: React.FC = () => {
                   key={index} 
                   className={`w-64 ${getPositionStyles(feature.position)} z-20`}
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105">
+                  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl hover:bg-green-50 transition-all duration-300 border border-gray-100 hover:scale-105 hover:border-green-200 cursor-pointer">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <IconComponent className="w-6 h-6 text-blue-600" />
+                        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors">
+                          <IconComponent className="w-6 h-6 text-green-600" />
                         </div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
                           {feature.title}
                         </h3>
                         <p className="text-sm text-gray-600">
@@ -109,12 +111,8 @@ const SocialProof: React.FC = () => {
                     </div>
                   </div>
                   
-                  {/* Connecting Line */}
-                  <div className={`absolute w-16 h-0.5 bg-gradient-to-r from-blue-300 to-transparent ${
-                    feature.position.includes('left') 
-                      ? 'right-0 top-1/2 transform translate-x-16 -translate-y-1/2' 
-                      : 'left-0 top-1/2 transform -translate-x-16 -translate-y-1/2 rotate-180'
-                  }`} />
+                  {/* Connecting Lines - Updated positioning */}
+                  <div className={getLineStyles(feature.position)} />
                 </div>
               );
             })}
@@ -130,8 +128,8 @@ const SocialProof: React.FC = () => {
           <div className="flex items-center justify-center space-x-12">
             {partners.map((partner, index) => (
               <div key={index} className="text-center">
-                <div className="w-24 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors">
-                  <span className="text-lg font-bold text-gray-700">{partner}</span>
+                <div className="w-24 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-green-100 hover:border-green-200 border border-transparent transition-all duration-300 cursor-pointer">
+                  <span className="text-lg font-bold text-gray-700 hover:text-green-700 transition-colors">{partner}</span>
                 </div>
               </div>
             ))}
@@ -139,11 +137,11 @@ const SocialProof: React.FC = () => {
         </div>
 
         {/* Simple Newsletter */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             Get Latest Updates
           </h3>
-          <p className="text-blue-100 mb-6">
+          <p className="text-green-100 mb-6">
             Subscribe for exclusive deals and product updates
           </p>
           
@@ -153,7 +151,7 @@ const SocialProof: React.FC = () => {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
             />
-            <button className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+            <button className="px-6 py-3 bg-white text-green-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
               Subscribe
             </button>
           </div>
