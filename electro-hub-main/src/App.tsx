@@ -63,6 +63,20 @@ function App() {
     }
   };
 
+  // Cart handlers that can be used from any component
+  const handleCartOpen = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCartClose = () => {
+    setIsCartOpen(false);
+  };
+
+  const handleCheckout = () => {
+    setIsCartOpen(false);
+    setCurrentOverlay('checkout');
+  };
+
   const renderOverlay = () => {
     if (!currentOverlay) return null;
 
@@ -74,6 +88,7 @@ function App() {
               productId={selectedProductId!}
               onBack={closeOverlay}
               onRelatedProductClick={handleProductClick}
+              onCartClick={handleCartOpen} // Pass cart functionality
             />
           </div>
         );
@@ -106,7 +121,7 @@ function App() {
         <WishlistProvider>
           <div className="min-h-screen bg-gray-50">
             <Header 
-              onCartClick={() => setIsCartOpen(true)}
+              onCartClick={handleCartOpen}
               onBrandFilter={handleBrandFilter}
             />
             
@@ -143,14 +158,11 @@ function App() {
             
             <Footer onNavigate={handleFooterNavigate} />
             
-            {/* Cart Component */}
+            {/* Cart Component - This will be available globally */}
             <Cart 
               isOpen={isCartOpen}
-              onClose={() => setIsCartOpen(false)}
-              onCheckout={() => {
-                setIsCartOpen(false);
-                setCurrentOverlay('checkout');
-              }}
+              onClose={handleCartClose}
+              onCheckout={handleCheckout}
             />
             
             {/* Overlay Pages */}
