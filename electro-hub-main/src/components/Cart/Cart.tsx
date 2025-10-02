@@ -110,7 +110,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
               <div className="space-y-2">
                 <button
                   onClick={onCheckout}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors"
+                  className="w-full text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-colors"
+                  style={{ backgroundColor: '#179E42' }}
                 >
                   Proceed to Checkout
                 </button>
@@ -125,7 +126,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, onCheckout }) => {
               {/* Continue Shopping */}
               <button
                 onClick={onClose}
-                className="w-full text-blue-600 hover:text-blue-700 font-medium py-2 transition-colors"
+                className="w-full font-medium py-2 hover:opacity-75 transition-colors"
+                style={{ color: '#179E42' }}
               >
                 Continue Shopping
               </button>
