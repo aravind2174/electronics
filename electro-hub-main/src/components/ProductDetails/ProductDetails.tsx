@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ShoppingCart, Heart, Share2, Star, Shield, Truck, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ShoppingCart, Star, Shield, Truck, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 import { products } from '../../data/products';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -17,7 +17,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
   
   const product = products.find(p => p.id === productId);
   const { addToCart } = useCart();
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   if (!product) {
     return (
@@ -26,7 +25,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Product not found</h2>
           <button
             onClick={onBack}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="px-6 py-3 text-white rounded-lg hover:opacity-90 transition-colors"
+            style={{ backgroundColor: '#179E42' }}
           >
             Go Back
           </button>
@@ -39,14 +39,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
     p.id !== product.id && 
     (p.brand === product.brand || p.screenType === product.screenType)
   ).slice(0, 4);
-
-  const handleWishlistToggle = () => {
-    if (isInWishlist(product.id)) {
-      removeFromWishlist(product.id);
-    } else {
-      addToWishlist(product);
-    }
-  };
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
@@ -62,7 +54,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="flex items-center text-blue-600 hover:text-blue-700 mb-6 transition-colors"
+          className="flex items-center hover:opacity-75 mb-6 transition-colors"
+          style={{ color: '#179E42' }}
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Products
@@ -121,8 +114,11 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`aspect-video rounded-lg overflow-hidden border-2 transition-all ${
-                        index === currentImageIndex ? 'border-blue-600' : 'border-gray-200 hover:border-gray-300'
+                        index === currentImageIndex 
+                          ? 'border-gray-400' 
+                          : 'border-gray-200 hover:border-gray-300'
                       }`}
+                      style={index === currentImageIndex ? { borderColor: '#179E42' } : {}}
                     >
                       <img
                         src={image}
@@ -139,7 +135,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
             <div className="space-y-6">
               {/* Brand & Name */}
               <div>
-                <p className="text-lg font-medium text-blue-600 mb-2">{product.brand}</p>
+                <p className="text-lg font-medium mb-2" style={{ color: '#179E42' }}>{product.brand}</p>
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
                 
                 {/* Rating */}
@@ -192,7 +188,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
                 <ul className="space-y-2">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: '#179E42' }}></span>
                       {feature}
                     </li>
                   ))}
@@ -220,26 +216,14 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
 
               {/* Actions */}
               <div className="space-y-4">
-                <div className="flex space-x-4">
+                <div className="flex">
                   <button
                     onClick={() => addToCart(product)}
-                    className="flex-1 flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+                    className="w-full flex items-center justify-center px-6 py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-colors"
+                    style={{ backgroundColor: '#179E42' }}
                   >
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Add to Cart
-                  </button>
-                  <button
-                    onClick={handleWishlistToggle}
-                    className={`px-6 py-3 border-2 font-semibold rounded-lg transition-colors ${
-                      isInWishlist(product.id)
-                        ? 'border-red-500 text-red-500 bg-red-50'
-                        : 'border-gray-300 text-gray-700 hover:border-red-500 hover:text-red-500'
-                    }`}
-                  >
-                    <Heart className={`w-5 h-5 ${isInWishlist(product.id) ? 'fill-current' : ''}`} />
-                  </button>
-                  <button className="px-6 py-3 border-2 border-gray-300 text-gray-700 hover:border-gray-400 font-semibold rounded-lg transition-colors">
-                    <Share2 className="w-5 h-5" />
                   </button>
                 </div>
 
@@ -265,9 +249,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
                 onClick={() => setActiveTab('specs')}
                 className={`px-8 py-4 font-semibold transition-colors ${
                   activeTab === 'specs'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    ? 'border-b-2'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
+                style={activeTab === 'specs' ? { borderColor: '#179E42', color: '#179E42' } : {}}
               >
                 Specifications
               </button>
@@ -275,9 +260,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
                 onClick={() => setActiveTab('reviews')}
                 className={`px-8 py-4 font-semibold transition-colors ${
                   activeTab === 'reviews'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    ? 'border-b-2'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
+                style={activeTab === 'reviews' ? { borderColor: '#179E42', color: '#179E42' } : {}}
               >
                 Reviews ({product.reviews})
               </button>
@@ -417,7 +403,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
                           }
                         </p>
                         <div className="mt-2 text-sm text-gray-500">
-                          Was this helpful? <button className="text-blue-600 hover:text-blue-700">Yes (12)</button> | <button className="text-blue-600 hover:text-blue-700">No (1)</button>
+                          Was this helpful? <button className="hover:opacity-75" style={{ color: '#179E42' }}>Yes (12)</button> | <button className="hover:opacity-75" style={{ color: '#179E42' }}>No (1)</button>
                         </div>
                       </div>
                     ))}
