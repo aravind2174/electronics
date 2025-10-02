@@ -9,9 +9,10 @@ interface ProductDetailsProps {
   productId: string;
   onBack: () => void;
   onRelatedProductClick: (productId: string) => void;
+  onCartClick: () => void;
 }
 
-const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRelatedProductClick }) => {
+const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRelatedProductClick, onCartClick }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<'specs' | 'reviews'>('specs');
   
@@ -51,15 +52,25 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="flex items-center hover:opacity-75 mb-6 transition-colors"
-          style={{ color: '#179E42' }}
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Products
-        </button>
+        {/* Back Button and Cart Icon */}
+        <div className="flex justify-between items-center mb-6">
+          <button
+            onClick={onBack}
+            className="flex items-center hover:opacity-75 transition-colors"
+            style={{ color: '#179E42' }}
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Products
+          </button>
+          
+          <button
+            onClick={onCartClick}
+            className="flex items-center px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <ShoppingCart className="w-6 h-6 text-gray-700" />
+            <span className="ml-2 text-gray-700">Cart</span>
+          </button>
+        </div>
 
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
