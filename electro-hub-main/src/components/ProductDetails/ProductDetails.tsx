@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ShoppingCart, Star, Shield, Truck, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Star, Shield, Truck, RotateCcw, ChevronLeft, ChevronRight, ShoppingCart } from 'lucide-react';
 import { products } from '../../data/products';
 import { useCart } from '../../context/CartContext';
-import { useWishlist } from '../../context/WishlistContext';
 import ProductCard from '../ProductCard/ProductCard';
+import Header from '../Header/Header';
 
 interface ProductDetailsProps {
   productId: string;
@@ -21,16 +21,19 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Product not found</h2>
-          <button
-            onClick={onBack}
-            className="px-6 py-3 text-white rounded-lg hover:opacity-90 transition-colors"
-            style={{ backgroundColor: '#179E42' }}
-          >
-            Go Back
-          </button>
+      <div className="min-h-screen bg-gray-50">
+        <Header onCartClick={onCartClick} />
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Product not found</h2>
+            <button
+              onClick={onBack}
+              className="px-6 py-3 text-white rounded-lg hover:opacity-90 transition-colors"
+              style={{ backgroundColor: '#179E42' }}
+            >
+              Go Back
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -51,26 +54,18 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ productId, onBack, onRe
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header onCartClick={onCartClick} />
+      
       <div className="container mx-auto px-4 py-8">
-        {/* Back Button and Cart Icon */}
-        <div className="flex justify-between items-center mb-6">
-          <button
-            onClick={onBack}
-            className="flex items-center hover:opacity-75 transition-colors"
-            style={{ color: '#179E42' }}
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Products
-          </button>
-          
-          <button
-            onClick={onCartClick}
-            className="flex items-center px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors"
-          >
-            <ShoppingCart className="w-6 h-6 text-gray-700" />
-            <span className="ml-2 text-gray-700">Cart</span>
-          </button>
-        </div>
+        {/* Back Button */}
+        <button
+          onClick={onBack}
+          className="flex items-center hover:opacity-75 mb-6 transition-colors"
+          style={{ color: '#179E42' }}
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back to Products
+        </button>
 
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
