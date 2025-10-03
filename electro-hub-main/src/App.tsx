@@ -88,7 +88,14 @@ function App() {
               productId={selectedProductId!}
               onBack={closeOverlay}
               onRelatedProductClick={handleProductClick}
-              onCartClick={handleCartOpen} // Pass cart functionality
+              onCartClick={handleCartOpen}
+            />
+            
+            {/* Cart inside ProductDetails overlay */}
+            <Cart 
+              isOpen={isCartOpen}
+              onClose={handleCartClose}
+              onCheckout={handleCheckout}
             />
           </div>
         );
@@ -158,12 +165,14 @@ function App() {
             
             <Footer onNavigate={handleFooterNavigate} />
             
-            {/* Cart Component - This will be available globally */}
-            <Cart 
-              isOpen={isCartOpen}
-              onClose={handleCartClose}
-              onCheckout={handleCheckout}
-            />
+            {/* Cart Component - Only for main page */}
+            {!currentOverlay && (
+              <Cart 
+                isOpen={isCartOpen}
+                onClose={handleCartClose}
+                onCheckout={handleCheckout}
+              />
+            )}
             
             {/* Overlay Pages */}
             {renderOverlay()}
